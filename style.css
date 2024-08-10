@@ -104,7 +104,8 @@ section {
 }
 
 .home {
-  height: 730px;
+  height: 100vh;
+  min-height: 730px;
   width: 100%;
   /* background: url(./assets/herommmmmmmm.gif); */
   background-color: var(--bg-color);
