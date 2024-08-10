@@ -46,5 +46,58 @@ form.addEventListener("submit", (e) => {
       alert("Thanks for Contacting us..! I Will Contact You Soon...")
     )
     .catch((error) => console.error("Error!", error.message));
-    form.reset()
+  form.reset();
+});
+
+const canvas = document.getElementById("noise");
+const ctx = canvas.getContext("2d");
+
+canvas.width = window.innerWidth;
+canvas.height = window.innerHeight;
+
+function drawNoise() {
+  const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height);
+  const data = imageData.data;
+  for (let i = 0; i < data.length; i += 4) {
+    const color = Math.random() * 255;
+    data[i] = color;
+    data[i + 1] = color;
+    data[i + 2] = color;
+    data[i + 3] = 255;
+  }
+  ctx.putImageData(imageData, 0, 0);
+  requestAnimationFrame(drawNoise);
+}
+
+drawNoise();
+
+// Add class to animate
+setTimeout(() => {
+  canvas.classList.add("noise-animate");
+}, 0);
+
+const toggleButtons = document.querySelectorAll(".toggleViewButton");
+
+toggleButtons.forEach((button) => {
+  button.addEventListener("change", function () {
+    const singleProject = button.closest(".single-project");
+    const laptopView = singleProject.querySelector(".laptopView");
+    const mobileView = singleProject.querySelector(".mobile-view");
+
+    if (button.checked) {
+      // Switch to mobile view
+      laptopView.style.display = "none";
+      mobileView.style.display = "block";
+      mobileView.classList.add("animate__fadeIn");
+      laptopView.classList.remove("animate__fadeIn", "animate__fadeOut");
+      mobileView.classList.remove("animate__fadeOut");
+    } else {
+      // Switch to laptop view
+      mobileView.style.display = "none";
+      laptopView.style.display = "block";
+      laptopView.classList.add("animate__fadeIn");
+      mobileView.classList.remove("animate__fadeIn", "animate__fadeOut");
+      laptopView.classList.remove("animate__fadeOut");
+    }
+  });
 });
