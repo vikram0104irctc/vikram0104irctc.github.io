@@ -1,0 +1,7 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://vikram0104irctc.github.io/sitemap.xml
+
+# Vikram Kumar Choudhary – Backend Full Stack Engineer Portfolio
+# vikram0104irctc@gmail.com
