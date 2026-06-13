@@ -336,18 +336,26 @@ function triggerHeroAnimations() {
       });
 
       form.reset();
+
+      // Show success message only after successful submission
       if (successMsg) {
-        successMsg.hidden = false;
         successMsg.removeAttribute('hidden');
+        successMsg.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
         setTimeout(() => {
-          successMsg.hidden = true;
-        }, 6000);
+          successMsg.setAttribute('hidden', '');
+        }, 7000);
       }
     } catch (err) {
       console.error('Form submission error:', err);
+      // Show generic error in button area
+      submitBtn.innerHTML = '<span>Failed — try emailing directly</span><i class="ri-close-circle-line"></i>';
+      setTimeout(() => { submitBtn.innerHTML = originalContent; }, 3000);
+      return; // Don't restore button in finally
     } finally {
       submitBtn.disabled = false;
-      submitBtn.innerHTML = originalContent;
+      if (!submitBtn.innerHTML.includes('Failed')) {
+        submitBtn.innerHTML = originalContent;
+      }
     }
   });
 

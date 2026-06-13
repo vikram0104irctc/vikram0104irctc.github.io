@@ -78,7 +78,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 80px;
+  scroll-padding-top: 70px;
   font-size: 16px;
 }
 
@@ -210,14 +210,29 @@ body:has(a:hover, button:hover) .cursor-follower {
 }
 
 @keyframes loadProgress {
-  0% { width: 0%; }
-  60% { width: 75%; }
-  100% { width: 100%; }
+  0% {
+    width: 0%;
+  }
+
+  60% {
+    width: 75%;
+  }
+
+  100% {
+    width: 100%;
+  }
 }
 
 @keyframes pulse {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0.6; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.6;
+  }
 }
 
 /* ===== UTILITY CLASSES ===== */
@@ -320,7 +335,7 @@ body:has(a:hover, button:hover) .cursor-follower {
   content: '';
   position: absolute;
   inset: 0;
-  background: linear-gradient(135deg, rgba(255,255,255,0.15) 0%, transparent 100%);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.15) 0%, transparent 100%);
   opacity: 0;
   transition: var(--transition-base);
 }
@@ -513,9 +528,11 @@ body:has(a:hover, button:hover) .cursor-follower {
 .hamburger.open span:nth-child(1) {
   transform: translateY(7px) rotate(45deg);
 }
+
 .hamburger.open span:nth-child(2) {
   opacity: 0;
 }
+
 .hamburger.open span:nth-child(3) {
   transform: translateY(-7px) rotate(-45deg);
 }
@@ -572,9 +589,19 @@ body:has(a:hover, button:hover) .cursor-follower {
 }
 
 @keyframes floatGlow {
-  0%, 100% { transform: translate(0, 0) scale(1); }
-  33% { transform: translate(20px, -20px) scale(1.05); }
-  66% { transform: translate(-15px, 15px) scale(0.95); }
+
+  0%,
+  100% {
+    transform: translate(0, 0) scale(1);
+  }
+
+  33% {
+    transform: translate(20px, -20px) scale(1.05);
+  }
+
+  66% {
+    transform: translate(-15px, 15px) scale(0.95);
+  }
 }
 
 .hero-content {
@@ -584,10 +611,18 @@ body:has(a:hover, button:hover) .cursor-follower {
   margin: 0 auto;
   padding: var(--container-padding);
   display: grid;
-  grid-template-columns: 1fr 400px;
+  grid-template-columns: 1fr 420px;
   gap: 60px;
   align-items: center;
   width: 100%;
+}
+
+/* Left column — all text content */
+.hero-text-col {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  min-width: 0;
 }
 
 .hero-badge {
@@ -617,8 +652,15 @@ body:has(a:hover, button:hover) .cursor-follower {
 }
 
 @keyframes pulse-dot {
-  0%, 100% { box-shadow: 0 0 8px rgba(16, 185, 129, 0.6); }
-  50% { box-shadow: 0 0 16px rgba(16, 185, 129, 1); }
+
+  0%,
+  100% {
+    box-shadow: 0 0 8px rgba(16, 185, 129, 0.6);
+  }
+
+  50% {
+    box-shadow: 0 0 16px rgba(16, 185, 129, 1);
+  }
 }
 
 .hero-title {
@@ -666,8 +708,15 @@ body:has(a:hover, button:hover) .cursor-follower {
 }
 
 @keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0;
+  }
 }
 
 .hero-description {
@@ -794,12 +843,16 @@ body:has(a:hover, button:hover) .cursor-follower {
   justify-content: center;
   animation: fadeInRight 1s ease 0.3s forwards;
   opacity: 0;
+  overflow: visible;
+  /* Give enough padding so float cards don't clip */
+  padding: 50px 40px;
 }
 
 .hero-image-container {
   position: relative;
-  width: 380px;
-  height: 380px;
+  width: 340px;
+  height: 340px;
+  overflow: visible;
 }
 
 .hero-image-ring {
@@ -829,8 +882,13 @@ body:has(a:hover, button:hover) .cursor-follower {
 }
 
 @keyframes ringRotate {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .hero-img {
@@ -877,20 +935,27 @@ body:has(a:hover, button:hover) .cursor-follower {
 }
 
 .card-top {
-  top: -10px;
-  left: -50px;
+  top: 0;
+  left: 0;
   animation: floatCard 3s ease-in-out infinite;
 }
 
 .card-bottom {
-  bottom: -10px;
-  right: -50px;
+  bottom: 0;
+  right: 0;
   animation: floatCard 3s ease-in-out infinite 1.5s;
 }
 
 @keyframes floatCard {
-  0%, 100% { transform: translateY(0px); }
-  50% { transform: translateY(-8px); }
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-8px);
+  }
 }
 
 .scroll-indicator {
@@ -934,24 +999,52 @@ body:has(a:hover, button:hover) .cursor-follower {
 }
 
 @keyframes scrollWheel {
-  0% { transform: translateY(0); opacity: 1; }
-  100% { transform: translateY(10px); opacity: 0; }
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(10px);
+    opacity: 0;
+  }
 }
 
 /* ===== ANIMATIONS ===== */
 @keyframes fadeInDown {
-  from { opacity: 0; transform: translateY(-20px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to { opacity: 1; transform: translateY(0); }
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fadeInRight {
-  from { opacity: 0; transform: translateX(40px); }
-  to { opacity: 1; transform: translateX(0); }
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
 }
 
 /* ===== ABOUT SECTION ===== */
@@ -1463,9 +1556,17 @@ body:has(a:hover, button:hover) .cursor-follower {
   transition: var(--transition-base);
 }
 
-.gradient-1 { background: var(--gradient-card-1); }
-.gradient-2 { background: var(--gradient-card-2); }
-.gradient-3 { background: var(--gradient-card-3); }
+.gradient-1 {
+  background: var(--gradient-card-1);
+}
+
+.gradient-2 {
+  background: var(--gradient-card-2);
+}
+
+.gradient-3 {
+  background: var(--gradient-card-3);
+}
 
 .project-card:hover .project-image-placeholder {
   transform: scale(1.05);
@@ -1609,6 +1710,73 @@ body:has(a:hover, button:hover) .cursor-follower {
   color: var(--accent-lighter);
 }
 
+/* Project screenshot image (when you add real screenshots) */
+.project-screenshot {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  object-position: top;
+  display: block;
+  transition: var(--transition-base);
+}
+
+.project-card:hover .project-screenshot {
+  transform: scale(1.04);
+  object-position: bottom;
+}
+
+/* Project actions (live url / private) */
+.project-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+  margin-top: 4px;
+}
+
+.project-action-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 16px;
+  border-radius: var(--radius-md);
+  font-size: 0.8rem;
+  font-weight: 600;
+  transition: var(--transition-spring);
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.project-action-btn.live-btn {
+  background: var(--gradient-main);
+  color: white;
+  box-shadow: 0 4px 16px var(--accent-glow);
+}
+
+.project-action-btn.live-btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px var(--accent-glow);
+}
+
+.project-action-btn.github-btn {
+  background: var(--bg-glass);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-secondary);
+}
+
+.project-action-btn.github-btn:hover {
+  border-color: var(--border-accent);
+  color: var(--accent-lighter);
+  background: var(--bg-glass-hover);
+}
+
+.project-action-btn.private-btn {
+  background: rgba(99, 102, 241, 0.08);
+  border: 1px solid var(--border-accent);
+  color: var(--accent-lighter);
+  cursor: default;
+  opacity: 0.75;
+}
+
 /* ===== GITHUB SECTION ===== */
 .github-section {
   padding: var(--section-padding);
@@ -1697,7 +1865,7 @@ body:has(a:hover, button:hover) .cursor-follower {
   margin-bottom: 12px;
 }
 
-.contact-info-card > p {
+.contact-info-card>p {
   font-size: 0.92rem;
   color: var(--text-secondary);
   line-height: 1.7;
@@ -1741,7 +1909,7 @@ a.contact-detail-item:hover {
   flex-shrink: 0;
 }
 
-.contact-detail-item > div {
+.contact-detail-item>div {
   display: flex;
   flex-direction: column;
   gap: 2px;
@@ -1842,7 +2010,7 @@ a.contact-detail-item:hover {
 }
 
 .form-success {
-  display: flex;
+  display: none;
   align-items: center;
   gap: 10px;
   padding: 14px 18px;
@@ -1852,6 +2020,11 @@ a.contact-detail-item:hover {
   font-size: 0.88rem;
   font-weight: 500;
   color: #10b981;
+  animation: fadeInUp 0.4s ease forwards;
+}
+
+.form-success:not([hidden]) {
+  display: flex;
 }
 
 /* ===== FOOTER ===== */
@@ -1959,6 +2132,12 @@ a.contact-detail-item:hover {
     grid-template-columns: 1fr;
     padding: 0 6%;
     text-align: center;
+    justify-items: center;
+  }
+
+  .hero-text-col {
+    align-items: center;
+    width: 100%;
   }
 
   .hero-image-wrapper {
@@ -2019,14 +2198,15 @@ a.contact-detail-item:hover {
     width: 280px;
     height: 100vh;
     background: rgba(7, 7, 16, 0.98);
-    backdrop-filter: blur(20px);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 12px;
-    transition: var(--transition-base);
+    transition: right 0.35s cubic-bezier(0.4, 0, 0.2, 1);
     border-left: 1px solid var(--border-subtle);
-    z-index: 999;
+    z-index: 1001;
   }
 
   .nav-links.open {
