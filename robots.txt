@@ -1,7 +1,12 @@
 User-agent: *
 Allow: /
 
+# Sitemap
 Sitemap: https://vikram0104irctc.github.io/sitemap.xml
 
-# Vikram Kumar Choudhary – Backend Full Stack Engineer Portfolio
-# vikram0104irctc@gmail.com
+# Vikram Kumar Choudhary – Software Development Engineer II (SDE-2)
+# Backend Full Stack Engineer | Node.js | React.js | AWS | Gurugram, India
+# vikram0104irctc@gmail.com | https://vikram0104irctc.github.io/
+
+# Crawl-delay for bots (optional, Google ignores this but others respect it)
+Crawl-delay: 1
